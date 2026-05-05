@@ -60,8 +60,9 @@ df_maps["sexo"] = df_maps["sexo"].str.strip()
 df_maps["ent"] = df_maps["ent"].str.strip()
 
 # filtros dinámicos
-sexo_sel = st.sidebar.selectbox("Sexo", sorted(df_maps["sexo"].unique()))
-anio_sel = st.sidebar.selectbox("Año", sorted(df_maps["ano"].unique()))
+sexo_sel = st.sidebar.multiselect("Sexo", sorted(df_maps["sexo"].unique()))
+
+anio_sel = st.sidebar.multiselect("Año", sorted(df_maps["ano"].unique()))
 
 df_base = df_maps[
     (df_maps["sexo"] == sexo_sel) &

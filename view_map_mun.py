@@ -66,7 +66,7 @@ sexo_sel = st.sidebar.multiselect("Sexo", sexos, default= sexos)
 anio_sel = st.sidebar.multiselect("Año", anios , default= anios)
 
 df_base = df_maps[
-    (df_maps["sexo"].isnin(sexo_sel)) &
+    (df_maps["sexo"].isin(sexo_sel)) &
     (df_maps["ano"].isin(anio_sel))
 ]
 

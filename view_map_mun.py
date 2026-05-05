@@ -98,7 +98,7 @@ df_final = df_base[
 
 # ordenar edades correctamente
 orden_edades = ["95-99","100-104","105-109","110-114","115+"]
-orden_anios = ["1990","1995", "2000", "2005", "2010", "2020"]
+orden_anios = [1990, 1995, 2000, 2005, 2010, 2020]
 df_final["edad"] = pd.Categorical(df_final["edad"], categories=orden_edades, ordered=True)
 df_final["ano"] = pd.Categorical(df_final["ano"], categories=orden_anios, ordered=True)
 df_final = df_final.sort_values(["ent","edad", "ano"])

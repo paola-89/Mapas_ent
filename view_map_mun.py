@@ -60,12 +60,13 @@ df_maps["sexo"] = df_maps["sexo"].str.strip()
 df_maps["ent"] = df_maps["ent"].str.strip()
 
 # filtros dinámicos
-sexo_sel = st.sidebar.multiselect("Sexo", sorted(df_maps["sexo"].unique()))
-
-anio_sel = st.sidebar.multiselect("Año", sorted(df_maps["ano"].unique()))
+sexos = sorted(df_maps["sexo"].unique())
+anios = sorted(df_maps["ano"].unique())
+sexo_sel = st.sidebar.multiselect("Sexo", sexos, default= sexos)
+anio_sel = st.sidebar.multiselect("Año", anios , default= anios)
 
 df_base = df_maps[
-    (df_maps["sexo"].isin(sexo_sel)) &
+    (df_maps["sexo"].isnin(sexo_sel)) &
     (df_maps["ano"].isin(anio_sel))
 ]
 
@@ -103,7 +104,9 @@ df_final = df_final.sort_values(["ent","edad"])
 # -----------------------------
 # VISUALIZACIÓN
 # -----------------------------
-st.subheader(f"{sexo_sel} - {anio_sel}")
+sexo_txt = ", ".join(sexo_sel) if sexo_sel else "Ambos sexos"
+anio_txt = ", ".join(map(str, anio_sel)) if anio_sel else "Todos los años"
+st.subheader(f"Sexo: {sexo_txt} | Año: {anio_txt}")
 
 if df_final.empty:
     st.warning("No hay mapas para estos filtros")

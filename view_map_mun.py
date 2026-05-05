@@ -104,8 +104,8 @@ df_final = df_final.sort_values(["ent","edad"])
 # -----------------------------
 # VISUALIZACIÓN
 # -----------------------------
-sexo_txt = ", ".join(sexo_sel) if sexo_sel else "Ambos sexos"
-anio_txt = ", ".join(map(str, anio_sel)) if anio_sel else "Todos los años"
+sexo_txt = ", ".join(sexo_sel) if sexo_sel else "Seleccionar sexo"
+anio_txt = ", ".join(map(str, anio_sel)) if anio_sel else "Seleccionar años"
 st.subheader(f"Sexo: {sexo_txt} | Año: {anio_txt}")
 
 if df_final.empty:
